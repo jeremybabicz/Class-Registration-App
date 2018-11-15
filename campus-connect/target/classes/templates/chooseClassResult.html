@@ -1,0 +1,42 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head><title>Class Enrollment Results</title></head>
+    
+    <body>
+        <h1>Your enrolled classes</h1>
+        
+        <!--<form action="#" th:action ="@{/dropClass}" th:object="${student}">
+            <ul>
+                <li th:each="class : *{classes}" th:text="${class.courseName}"  th:id="${class.id}" th:value="${classListWrapper.addToClassListAndReturn().id}">
+                </li>
+                <button type="submit" value="Submit"> Drop Class </button>
+            </ul>
+        </form>-->
+        <div th:if ="${enrollingFromDropped} == false">
+            <form action="#" th:action ="@{/dropClass}" th:object="${student}">
+                <ul>
+                    <li th:each="class : *{classes}" th:text="${class.courseName}" th:value="${classListWrapper.addToClassListAndReturn(class).id}">
+                    </li>
+                    <button type="submit" value="Submit"> Drop Class </button>
+                </ul>
+            </form>
+        </div>
+        <div th:if = "${enrollingFromDropped} == true">
+             <form action="#" th:action ="@{/dropClass}">
+                <ul>
+                    <li th:each=" class : ${classListWrapper.getClassList()}" th:text="${class.courseName}" th:value="${class.id}">
+                    </li>
+                    <button type="submit" value="Submit"> Drop Class </button>
+                </ul>
+            </form>
+        </div>
+          
+        
+        
+        
+        <a href = "/chooseClass">Go back to enrollment screen</a>
+        <br>
+        <a href = "/finishedEnroll">Finish Enrolling</a>
+    
+    </body>
+    
+</html>

@@ -1,0 +1,15 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Result</title>
+    
+    <body>
+            <h1>Here is your information</h1>
+            <p th:text="'id: ' + ${student.id}" />
+            <p th:text="'First name: ' + ${student.firstName}" />
+            <p th:text="'Last name: ' + ${student.lastName}" />
+            <p th:text="'Year: ' + ${student.year}"/>
+            <p th:text="'Student type: ' + ${student.studentType}"/>
+            <p th:text="'Major: ' + ${student.major}"/>
+            <a href="/quarter">Choose a quarter</a>
+    </body>
+</head>

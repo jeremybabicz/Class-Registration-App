@@ -1,0 +1,19 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head><title>Drop classes</title></head>
+    
+    <body>
+          <h1>Your dropped classes</h1>
+    </body>
+    
+    <form action="#" th:action ="@{/chooseClass}" th:object="${student}" method="post">
+        
+        <ul>
+            <li th:each="class : *{classes}" th:value="${classListWrapper.removeFromClassListAndReturn(class).id}">
+                <label th:text="${class.courseName}"></label>
+            </li>
+            <input type="submit" value="Submit">
+        </ul>
+    </form>
+    
+    
+</html>

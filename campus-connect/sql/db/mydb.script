@@ -1,0 +1,45 @@
+CREATE MEMORY TABLE PUBLIC.student_type(
+	type_name varchar(50) NOT NULL PRIMARY KEY
+);
+
+CREATE MEMORY TABLE PUBLIC.year(
+	year_name varchar(50) NOT NULL PRIMARY KEY
+);
+
+CREATE MEMORY TABLE PUBLIC.major(
+	major_name varchar(100) NOT NULL PRIMARY KEY
+);
+
+CREATE MEMORY TABLE PUBLIC.quarter(
+	quarter_name varchar(100) NOT NULL PRIMARY KEY
+);
+
+CREATE MEMORY TABLE PUBLIC.class(
+	id INTEGER IDENTITY NOT NULL PRIMARY KEY,
+	subject varchar(100),
+	course_num INTEGER,
+	course_name varchar(50),
+	quarter varchar(50),
+	FOREIGN KEY (quarter) REFERENCES quarter(quarter_name)
+);
+
+CREATE MEMORY TABLE PUBLIC.student(
+	id INTEGER IDENTITY NOT NULL PRIMARY KEY,
+	f_name varchar(50),
+	l_name varchar(50),
+	year varchar(50),
+	student_type varchar(50),
+	major varchar(50),
+	FOREIGN KEY (year) REFERENCES year(year_name),
+	FOREIGN KEY (student_type) REFERENCES student_type(type_name),
+	FOREIGN KEY (major) REFERENCES major(major_name),
+);
+
+CREATE MEMORY TABLE PUBLIC.class_list(
+	class_id INTEGER,
+	student_id INTEGER,
+    PRIMARY KEY (class_id, student_id),
+	FOREIGN KEY (class_id) REFERENCES class(id),
+	FOREIGN KEY (student_id) REFERENCES student(id)
+);
+INSERT INTO class VALUES(1,'SE',352,'Enterprise Dev','Fall');

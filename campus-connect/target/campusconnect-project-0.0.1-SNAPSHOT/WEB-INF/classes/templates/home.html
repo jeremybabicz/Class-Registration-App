@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Home Page</title></head>
+<body>
+<h1>Hello !</h1>
+<h2>Welcome to <span th:text="${appName}">Our App</span></h2>
+    <h3>Please enter your information below</h3>
+    <form action="#" th:action="@{/}"
+    th:object="${student}" method ="post">
+        <p><input type="hidden" th:field="*{id}" /></p>
+        <p>Firstname <input type="text" th:field="*{firstName}"/></p>
+        <p>Lastname <input type="text" th:field="*{lastName}"/></p>
+        
+        <p>Select school Year
+        <select th:field="*{year}">
+            <option th:each="year: ${yearList}" th:value="${year.yearName}" th:id="${year.id}" th:name="year" th:text="${year.yearName}"></option>
+        </select>
+        </p>
+        
+        <p>Select type of student
+        <select th:field="*{studentType}">
+            <option th:each="studentType: ${studentTypeList}" th:value="${studentType.studentTypeName}" th:id="${studentType.id}" th:name="studentType" th:text="${studentType.studentTypeName}"></option>
+        </select>
+        </p>
+        
+        <p>Select your major
+        <select th:field="*{major}">
+            <option th:each="major: ${majorList}" th:value="${major.majorName}" th:id="${major.id}" th:name="major" th:text="${major.majorName}"></option>
+        </select>
+        </p>
+        
+        
+        <p><input type="submit" value="Submit" /></p>
+    
+    </form>
+    
+<!--<a href="/quarter">Enroll for classes!</a>-->
+</body>
+</html>

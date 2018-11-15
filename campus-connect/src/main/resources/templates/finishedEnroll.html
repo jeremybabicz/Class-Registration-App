@@ -1,0 +1,8 @@
+<html>
+<head><title>Finished Enrolling</title></head>
+    <h2>Congrats! You finished Enrolling!</h2>
+    
+    <h3 th:text = "'You are officially enrolled in the following classes for the ' + ${quarter.quarterName} + ' quarter'"></h3>
+        <li th:each="class : ${classListWrapper.getClassList()}">
+        <label th:text="${class.courseName}"></label>
+</html>

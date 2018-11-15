@@ -1,0 +1,27 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Quarter Enroll</title></head>
+    <body>
+        <h1>Please Choose a quarter to enroll in</h1>
+    
+   <form action="#" th:action="@{/chooseClass}" th:object="${quarter}">     
+    <ul>
+        <li th:each="q : ${quarterList}">
+            <!--<input type="radio" th:field="*{quarter}" th:value="${q.quarterName}" />
+            <label th:for= "${#ids.next('quarter')}" th:text="#{${q.quarterName}}"></label>-->
+            <input type="radio" th:field="*{quarterName}" th:value="${q.quarterName}" th:id ="${q.id}" th:name="quarter"/>
+            <label th:text="${q.quarterName}"></label>
+        </li>
+        <input type="submit" value="Submit">
+    </ul>
+    </form>
+        
+    </body>
+  <!--  <form action="#" th:action="@{/chooseClass}">
+        <input type="radio" name="quarter" value="summer"> Summer<br>
+        <input type="radio" name="quarter" value="fall"> Fall<br>
+        <input type="radio" name="quarter" value="winter"> Winter<br>
+        <input type="radio" name="quarter" value="spring" > Spring<br>
+        <input type="submit" value="Submit">
+    </form>-->
+    
+</html>

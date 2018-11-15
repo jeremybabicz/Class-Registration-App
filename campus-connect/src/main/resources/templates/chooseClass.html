@@ -1,0 +1,31 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Class Enroll</title></head>
+    <body>
+        <h1 th:text = "'Choose your classes for ' + ${quarter.quarterName}"/h1> </h1>
+        
+        <!--<form action="#" th:action ="@{/chooseClass}" th:object="${student}" method="post">
+            <ul>
+                <li th:each="class : ${classList}" >
+                    <input type="checkbox" th:field=*{classes}
+                    th:id="${class.id}" th:value="${class.id}" th:name="${class.courseName}"/>
+                        <label th:text="${class.courseName}"></label>
+                </li>
+                <input type="submit" value="Submit">
+            </ul>    
+        </form>-->
+        
+        <form action="#" th:action ="@{/chooseClass}" th:object="${student}" method="post">
+            <ul>
+                <li th:each="class : ${classList}" >
+                    <input type="checkbox" th:field=*{classes}
+                    th:value="${class.id}" />
+                        <label th:text="${class.courseName}"></label>
+                </li>
+                <input type="submit" value="Submit">
+            </ul>    
+        </form>
+        
+        
+        
+    </body>
+</html>
